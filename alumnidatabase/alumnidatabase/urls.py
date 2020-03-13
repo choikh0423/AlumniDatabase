@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
 import users.views
 import searches.views
 
@@ -22,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('signin/', users.views.signin),
     path('search/', searches.views.search),
+    path('', RedirectView.as_view(url='search/', permanent=True))
 
 ]
