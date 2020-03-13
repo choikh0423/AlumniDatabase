@@ -31,16 +31,16 @@ class Location(models.Model):
 
 class Alumni(models.Model):
     name = models.CharField(max_length=100)
-    photo = models.ImageField()
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    photo = models.ImageField(null=True)
+    college = models.ForeignKey(College, on_delete=models.CASCADE, null=True)
     graduation_date = models.IntegerField()
-    industry = models.ForeignKey(Industry, on_delete=models.CASCADE)
-    current_employer = models.ForeignKey(Employer, on_delete=models.CASCADE)
-    past_employer = models.ForeignKey(Employer, on_delete=models.CASCADE)
-    email = models.email()
+    industry = models.ForeignKey(Industry, on_delete=models.CASCADE, null=True)
+    current_employer = models.ForeignKey(Employer, related_name = 'current_employer', on_delete=models.CASCADE)
+    past_employer = models.ManyToManyField(Employer)
+    email = models.EmailField(max_length = 200, null = True, blank = True)
 
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
 
 
 
