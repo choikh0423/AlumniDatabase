@@ -6,4 +6,5 @@ from .models import Alumni
 
 @admin.register(Alumni)
 class SearchAdmin(admin.ModelAdmin):
-    list_display = ['name', 'college', 'graduation_date']
+    list_display = ('name', 'college', 'graduation_date',
+                    'industry', 'current_employer')
