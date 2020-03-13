@@ -21,6 +21,7 @@ class Industry(models.Model):
 class Employer(models.Model):
     """Model representing a Employer."""
     name = models.CharField(max_length=100)
+    
 
 
 class Location(models.Model):
@@ -34,3 +35,13 @@ class Alumni(models.Model):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     graduation_date = models.IntegerField()
     industry = models.ForeignKey(Industry, on_delete=models.CASCADE)
+    current_employer = models.ForeignKey(Employer, on_delete=models.CASCADE)
+    past_employer = models.ForeignKey(Employer, on_delete=models.CASCADE)
+    email = models.email()
+
+def __str__(self):
+    return self.name
+
+
+
+
