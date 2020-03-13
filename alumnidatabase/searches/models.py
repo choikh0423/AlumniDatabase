@@ -33,3 +33,4 @@ class Alumni(models.Model):
     photo = models.ImageField()
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     graduation_date = models.IntegerField()
+    industry = models.ForeignKey(Industry, on_delete=models.CASCADE)
