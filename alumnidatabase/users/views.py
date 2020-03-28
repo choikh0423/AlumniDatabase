@@ -4,4 +4,8 @@ from django.shortcuts import render
 
 
 def signin(request):
-    return render(request, 'signin.html')
+    return render(request, 'login.html')
+
+
+def signout(request):
+    return render(request, 'logout.html')

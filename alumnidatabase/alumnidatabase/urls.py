@@ -15,14 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 from django.views.generic import RedirectView
 import users.views
 import searches.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('signin/', users.views.signin),
+    path('user/', include('users.urls')),
     path('search/', searches.views.search),
     path('', RedirectView.as_view(url='search/', permanent=True))
-
 ]
+
+# Django Authentication Url (for signin, signout, and account management)

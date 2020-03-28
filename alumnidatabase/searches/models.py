@@ -37,7 +37,7 @@ class Alumni(models.Model):
     current_employer = models.ForeignKey(
         Employer, related_name='current_employer', on_delete=models.CASCADE, null=True)
     past_employer = models.ManyToManyField(Employer)
-    email = models.EmailField(max_length=200, null=True, blank=True)
+    email = models.EmailField(max_length=200, null=True)
 
     def __str__(self):
         return self.name

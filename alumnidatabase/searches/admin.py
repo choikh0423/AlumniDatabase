@@ -1,7 +1,14 @@
 from django.contrib import admin
 from .models import Alumni
+from .models import College
+from .models import Major
+from .models import Industry
+from .models import Location
 
 # Register your models here.
+
+admin.site.register(College)
+admin.site.register(Major)
 
 
 @admin.register(Alumni)
