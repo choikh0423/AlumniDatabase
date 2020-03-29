@@ -21,10 +21,10 @@ import users.views
 import searches.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user/', include('users.urls')),
-    path('search/', searches.views.search),
-    path('', RedirectView.as_view(url='search/', permanent=True))
+    path('admin/', admin.site.urls, name='admin'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('searches/', include('searches.urls')),
+    path('', RedirectView.as_view(url='searches/', permanent=True))
 ]
 
 # Django Authentication Url (for signin, signout, and account management)

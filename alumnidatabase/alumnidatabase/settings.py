@@ -57,7 +57,9 @@ ROOT_URLCONF = 'alumnidatabase.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,4 +130,4 @@ MEDIA_ROOT = BASE_DIR
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'user/accounts/login'
+LOGIN_URL = 'accounts/login'

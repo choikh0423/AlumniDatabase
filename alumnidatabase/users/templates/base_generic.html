@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Weclome to Alumni Database</title>{% endblock %}
+  <meta charset="utf-8">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <div id="navbar">
+    {% block sidebar %}
+    <ul>
+      <li><a href="{% url 'home' %}">Alumni Database</a></li>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="/">Directory</a></li>
+      {% if user.is_authenticated %}
+      <li>{{ user.get_username }}</li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+      <li><a href="/">Register</a></li>
+      {% endif %}
+    </ul>
+    {% endblock %}
+  </div>
+  <div id="content">{% block content %}{% endblock %}</div>
+</body>
+</html>
