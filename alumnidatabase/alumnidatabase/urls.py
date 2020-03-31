@@ -22,8 +22,7 @@ import searches.views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('searches/', include('searches.urls')),
+    path('searches/', include('searches.urls'), name='home'),
     path('', RedirectView.as_view(url='searches/', permanent=True))
 ]
 

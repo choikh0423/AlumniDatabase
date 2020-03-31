@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    {% block title %}<title>Weclome to Alumni Database</title>{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id='navbar'>
+      {% block sidebar %}
+      <ul>
+        <div id='navbar-part1'>
+          <li><a href="{% url 'home' %}">Alumni Database</a></li>
+        </div>
+        <div id='navbar-part2'>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="/">Directory</a></li>
+          {% else %}
+          {% endif %}
+        </div>
+        <div id='navbar-part3'>
+          {% if user.is_authenticated %}
+          <li>{{ user.get_username }}</li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          {% endif %}
+        </div>
+      </ul>
+      {% endblock %}
+    </div>
+    {% if user.is_authenticated %}
+      <div id="content">{% block content %}{% endblock %}</div>
+    {% else %}
+      <div id='intro_format'>
+        <div id='intro_static'>
+          <h1>Discover your alumni.</h1>
+          <img src={% static 'images/login_illustration.png'%} alt="Login Illustration">
+        </div>
+        <div id="intro_dynamic">{% block intro %}{% endblock %}</div>
+      </div>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,139 @@
+html {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(to left, white 70%, #ffdc7d 70%);
+  height: 100vh;
+}
+
+body {
+  height: 95vh;
+  margin: 0;
+}
+
+/* Navigation Bar CSS */
+#navbar {
+  height: 10%;
+}
+
+#navbar ul {
+  display: flex;
+  flex-direction: row;
+  padding: 1% 2% 1% 2%;
+}
+
+#navbar li {
+  display: inline-block;
+  color: black;
+}
+
+#navbar-part1 {
+  width: 20%;
+}
+
+#navbar-part1 li {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#navbar-part1 a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Intro: Login Page CSS */
+/* Static Part */
+#content_container {
+  display: block;
+}
+
+#intro_format {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+}
+
+#intro_static {
+  width: 30%;
+  text-align: center;
+  margin: auto 0 auto 0;
+}
+
+#intro_static img {
+  width: 85%;
+}
+
+#intro_static h1 {
+  margin: 0 auto 15% auto;
+  width: 60%;
+  text-align: left;
+  font-size: 40px;
+  color: #bd8600;
+}
+
+/* Dynamic Part */
+#intro_dynamic {
+  width: 25%;
+  margin: auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#login-title {
+  font-size: 25px;
+  margin-bottom: 13%;
+}
+
+#login_label {
+  margin-bottom: 3%;
+}
+
+#login_input {
+  margin-bottom: 13%;
+}
+
+#intro_dynamic form input {
+  height: 46px;
+  border-radius: 5%;
+  border: none;
+  background-color: #efefef;
+}
+
+#login_input input {
+  width: 100%;
+}
+
+#login_button {
+  width: 45%;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: #f5b506;
+}
+
+#form_validation p {
+  color: #ce0031;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#forgot_pw_text {
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 2%;
+}
+
+#forgot_pw_text a {
+  text-decoration: none;
+  color: #bd8600;
+}
+
+#register_text {
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 2%;
+}
+
+#register_text a {
+  text-decoration: none;
+  color: #bd8600;
+  font-weight: 700;
+}

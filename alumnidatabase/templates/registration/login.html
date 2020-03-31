@@ -1,37 +1,43 @@
 {% extends "base_generic.html" %}
 
-{% block content %}
+{% block intro %}
+  <h1 id='login-title'> Login to Alumni Database </h1>
 
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
-  
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-    {% else %}
-      <p>Please login to see this page.</p>
-    {% endif %}
-  {% endif %}
-  
-  <form method="post" action="{% url 'login' %}">
+  <form method="post" action="{% url 'login' %}" novalidate>
     {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="login" />
+      <div id='login_label'>
+        {{ form.username.label_tag }}
+      </div>
+      <div id='login_input'>
+        {{ form.username }}
+      </div>
+      <div id='login_label'>
+        {{ form.password.label_tag }}
+      </div>
+      <div id='login_input'>
+        {{ form.password }}
+      </div>
+
+    <input id="login_button" type="submit" value="Login" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
-  
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+  <div id='form_validation'>
+    {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+    {% else %}
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+        {% else %}
+          <p>Please login to see this page.</p>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <p id='forgot_pw_text'><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+  <p id='register_text'>Don't have an account? <a href="{% url 'signup' %}">Register</a></p>
 
 {% endblock %}
