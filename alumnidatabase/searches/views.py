@@ -9,8 +9,10 @@ def index(request):
     return render(request, 'index.html')
 
 
-class CustomLoginView(LoginView):
-    authentication_form = CustomAuthenticationForm
+def login(response):
+    login_form = CustomAuthenticationForm()
+
+    return render(response, 'registration/login.html', {"form": login_form})
 
 
 def signup(response):

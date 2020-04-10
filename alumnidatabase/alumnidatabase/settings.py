@@ -131,3 +131,5 @@ MEDIA_ROOT = BASE_DIR
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'accounts/login/'
+
+AUTHENTICATION_BACKENDS = ('searches.backends.SettingsBackend',)

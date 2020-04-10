@@ -3,20 +3,73 @@
 {% block intro %}
   <h1 id='login-title'> Register to the Alumni Database </h1>
 
-  <form method="post" action="{% url 'signup' %}" novalidate>
+  <form id="signup_form" method="post" action="{% url 'signup' %}" novalidate>
     {% csrf_token %}
-    {{form}}
+    <div id="signup_container1">
+      <div id="signup_content1">
+        <div id='signup_label'>
+          {{ form.firstname.label_tag }}
+        </div>
+        <div id='signup_input'>
+          {{ form.firstname }}
+        </div>
+        <div id='signup_error'>
+          {% for errors in form.firstname.errors %}
+            <p>{{ errors }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div id="signup_content1">
+        <div id='signup_label'>
+          {{ form.lastname.label_tag }}
+        </div>
+        <div id='signup_input'>
+          {{ form.lastname }}
+        </div>
+        <div id='signup_error'>
+          {% for errors in lastname.errors %}
+            <p>{{ errors }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div id="signup_container2">
+    {% for field in form %}
+      {% if field.name != "firstname" and field.name != "lastname" %}
+      <div id="signup_content2">
+        <div id='signup_label'>
+          {{ field.label_tag}}
+        </div>
+        <div id='signup_input'>
+          {{ field }}
+        </div>
+        <div id='signup_error'>
+          {% for errors in field.errors %}
+            <p>{{ errors }}</p>
+          {% endfor %}
+        </div>
+        <div id='signup_help'>
+          {% for help_text in field.help_text %}
+            <p>{{ help_text}}</p>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
     <button type="submit">Register</button>
   </form>
 
-  <div id='form_validation'>
+{% comment %} validation need fix {% endcomment %}
+<div id='form_validation'>
     {% if form.errors %}
-      <p>Your username and password didn't match. Please try again.</p>
+      <p>Please check if the information you have provided are valid.</p>
     {% else %}
       {% if next %}
         {% if user.is_authenticated %}
-          <p>Your account doesn't have access to this page. To proceed,
-          please login with an account that has access.</p>
+          <p>You are already registered in the site.</p>
         {% else %}
           <p>Please login to see this page.</p>
         {% endif %}

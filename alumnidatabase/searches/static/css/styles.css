@@ -71,10 +71,21 @@ body {
 
 /* Dynamic Part */
 #intro_dynamic {
-  width: 25%;
+  width: 30%;
   margin: auto;
   font-size: 18px;
   font-weight: bold;
+}
+
+#intro_dynamic button {
+  height: 46px;
+  border-radius: 5%;
+  border: none;
+  width: 45%;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: #f5b506;
 }
 
 #login-title {
@@ -94,11 +105,11 @@ body {
   height: 46px;
   border-radius: 5%;
   border: none;
-  background-color: #efefef;
 }
 
 #login_input input {
-  width: 100%;
+  width: 70%;
+  background-color: #efefef;
 }
 
 #login_button {
@@ -136,4 +147,70 @@ body {
   text-decoration: none;
   color: #bd8600;
   font-weight: 700;
+}
+
+/* Intro: Signup Page CSS */
+#signup_form input {
+  background-color: #efefef;
+  height: 46px;
+  border-radius: 5%;
+  border: none;
+}
+
+#signup_container1 {
+  display: flex;
+  flex-direction: row;
+}
+
+#signup_container1 input {
+  width: 90%;
+}
+
+#signup_content1 {
+  width: 50%;
+  margin-bottom: 3%;
+}
+
+#signup_container2 {
+  display: block;
+}
+
+#signup_container2 input {
+  width: 95%;
+}
+
+#signup_content2 {
+  margin-bottom: 3%;
+}
+
+#signup_help p {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 3% 0;
+}
+
+#signup_error p {
+  color: #ce0031;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 0 3% 0;
+}
+
+#help_text {
+  color: black;
+  font-weight: 400;
+}
+
+#error_message {
+  color: #ce0031;
+  font-weight: 400;
+}
+
+#id_username {
+  margin-bottom: 0;
+}
+
+#signup_form input {
+  margin: 3% 0 0 0;
 }

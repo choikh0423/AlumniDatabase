@@ -6,7 +6,7 @@
   <form method="post" action="{% url 'login' %}" novalidate>
     {% csrf_token %}
       <div id='login_label'>
-        {{ form.username.label_tag }}
+        <p> Email Address </p>
       </div>
       <div id='login_input'>
         {{ form.username }}
