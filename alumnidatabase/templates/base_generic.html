@@ -23,7 +23,7 @@
         </div>
         <div id='navbar-part3'>
           {% if user.is_authenticated %}
-          <li>{{ user.get_username }}</li>
+          <li>{{ user.first_name }}</li>
           <li><a href="{% url 'logout' %}">Logout</a></li>
           {% else %}
           {% endif %}

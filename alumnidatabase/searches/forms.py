@@ -96,6 +96,8 @@ class CustomSignupForm(UserCreationForm):
         user.username = ''.join([choice(pw_choice) for i in range(20)])
         user.email = self.cleaned_data['email']
         user.is_active = True
+        user.first_name = self.cleaned_data['firstname']
+        user.last_name = self.cleaned_data['lastname']
 
         if commit:
             user.save()
