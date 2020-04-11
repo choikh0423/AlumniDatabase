@@ -1,6 +1,8 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm
 from django.contrib.auth.models import User
+from .models import Profile
 import datetime
 from string import ascii_lowercase, digits
 from random import choice
@@ -68,19 +70,9 @@ class CustomSignupForm(UserCreationForm):
         },
     )
 
-    YEAR_CHOICE = [(y, y) for y in range(2010, datetime.date.today().year+1)]
-
-    joined_year = forms.ChoiceField(
-        label='Year of Joining Organization',
-        choices=YEAR_CHOICE,
-        required=True,
-        initial=datetime.date.today().year+1,
-    )
-
     class Meta:
         model = User
-        fields = ['firstname', 'lastname', 'email',
-                  'joined_year', 'password1', 'password2']
+        fields = ['firstname', 'lastname', 'email', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -102,3 +94,20 @@ class CustomSignupForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class ProfileSignupForm(ModelForm):
+
+    YEAR_CHOICE = [(y, y)
+                   for y in range(2010, datetime.date.today().year+1)]
+
+    joined_year = forms.ChoiceField(
+        label='Year of Joining Organization',
+        choices=YEAR_CHOICE,
+        required=True,
+        initial=datetime.date.today().year+1,
+    )
+
+    class Meta:
+        model = Profile
+        fields = ('joined_year',)

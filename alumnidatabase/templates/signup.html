@@ -58,6 +58,14 @@
       </div>
       {% endif %}
     {% endfor %}
+      <div id='signup_content2'>
+        <div if="signup_label">
+          {{ profile_form.joined_year.label_tag }}
+        </div>
+        <div id='signup_input'>
+          {{ profile_form.joined_year }}
+        </div>
+      </div>
     </div>
     <button type="submit">Register</button>
   </form>

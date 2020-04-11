@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from .forms import CustomAuthenticationForm, CustomSignupForm
+from django.contrib.auth import authenticate, login as auth_login
+from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm
 
 
 @login_required
@@ -15,15 +16,28 @@ def login(response):
     return render(response, 'registration/login.html', {"form": login_form})
 
 
-def signup(response):
-    if response.method == "POST":
-        signup_form = CustomSignupForm(response.POST)
+def signup(request):
+    if request.method == "POST":
+        signup_form = CustomSignupForm(request.POST)
+        profile_form = ProfileSignupForm(request.POST)
 
-        if signup_form.is_valid():
-            signup_form.save()
-            return redirect('/searches/accounts/login')
+        if signup_form.is_valid() and profile_form.is_valid():
+            user = signup_form.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            profile.save()
+
+            username = signup_form.cleaned_data.get('email')
+            password = signup_form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            auth_login(request, user)
+
+            return redirect('/searches')
 
     else:
         signup_form = CustomSignupForm()
+        profile_form = ProfileSignupForm()
 
-    return render(response, 'signup.html', {"form": signup_form})
+    return render(request, 'signup.html', {"form": signup_form, "profile_form": profile_form})

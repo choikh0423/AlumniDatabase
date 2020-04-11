@@ -4,6 +4,7 @@ from .models import College
 from .models import Major
 from .models import Industry
 from .models import Location
+from .models import Profile
 
 # Register your models here.
 
@@ -15,3 +16,6 @@ admin.site.register(Major)
 class SearchAdmin(admin.ModelAdmin):
     list_display = ('name', 'college', 'graduation_date',
                     'industry', 'current_employer')
+
+
+admin.site.register(Profile)
