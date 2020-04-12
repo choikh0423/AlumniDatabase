@@ -39,10 +39,10 @@ class CustomSignupForm(UserCreationForm):
 
     password1 = forms.CharField(
         label='Password',
-        widget=forms.PasswordInput,
+        widget=forms.PasswordInput(
+            attrs={'placeholder': "Use 8 or more characters with a mix of letters, numbers & symbols."}),
         required=True,
-        help_text=["Use 8 or more characters with a mix of letters, numbers & symbols.",
-                   "It must not be commonly used and too similar to your personal information."],
+        help_text="It must not be commonly used and too similar to your personal information.",
         error_messages={
             'invalid': "Please make sure that your password is correctly formatted",
             'required': "Password is required."

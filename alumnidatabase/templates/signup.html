@@ -51,9 +51,7 @@
           {% endfor %}
         </div>
         <div id='signup_help'>
-          {% for help_text in field.help_text %}
-            <p>{{ help_text}}</p>
-          {% endfor %}
+          <p>{{ field.help_text}}</p>
         </div>
       </div>
       {% endif %}

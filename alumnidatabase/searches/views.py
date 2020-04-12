@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import authenticate, login as auth_login
 from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm
+
+from django.db.models import Q
 
 
 @login_required
@@ -41,3 +44,12 @@ def signup(request):
         profile_form = ProfileSignupForm()
 
     return render(request, 'signup.html', {"form": signup_form, "profile_form": profile_form})
+
+
+# def search(request):
+#     template = 'index.html'
+
+#     query = request.GET.get('q')
+
+#     results = Post.object.filter(
+#         Q(name__icontains=query) | Q(email__icontains=query))

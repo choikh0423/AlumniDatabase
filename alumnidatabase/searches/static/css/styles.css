@@ -1,12 +1,16 @@
 html {
   font-family: "Roboto", sans-serif;
-  background: linear-gradient(to left, white 70%, #ffdc7d 70%);
+
   height: 100vh;
 }
 
 body {
   height: 95vh;
   margin: 0;
+}
+
+#intro_body {
+  background: linear-gradient(to left, white 70%, #ffdc7d 70%);
 }
 
 /* Navigation Bar CSS */
@@ -35,6 +39,24 @@ body {
 }
 
 #navbar-part1 a {
+  text-decoration: none;
+  color: black;
+}
+
+#navbar-part2 {
+  width: 60%;
+}
+
+#navbar-part2-1 {
+  padding: 0 auto 0 auto;
+}
+
+#navbar-part2 li {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#navbar-part2 a {
   text-decoration: none;
   color: black;
 }
