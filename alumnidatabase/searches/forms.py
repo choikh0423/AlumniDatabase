@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm, PasswordResetForm
 from django.contrib.auth.models import User
 from .models import Profile
 import datetime
@@ -111,3 +111,46 @@ class ProfileSignupForm(ModelForm):
     class Meta:
         model = Profile
         fields = ('joined_year',)
+
+class CustomChangePasswordForm(PasswordResetForm):
+    old_password = forms.CharField(
+        label = 'Old Password',
+        widget=forms.PasswordInput,
+        required=True,
+        error_messages={
+            'invalid': "Incorrect Old Password.",
+            'required': "Old Password is required."
+    }
+    )
+
+    new_password1 = forms.CharField(
+        label = 'New Password',
+        widget=forms.PasswordInput(
+            attrs={'placeholder': "Use 8 or more characters with a mix of letters, numbers & symbols."}),
+        required=True,
+        error_messages={
+            'invalid': "Please provide proper first name.",
+            'required': " is required."
+    }
+    )
+    
+    new_password2 = forms.CharField(
+        label = 'New Password Confirmation',
+        widget=forms.PasswordInput,
+        required=True,
+        error_messages={
+            'invalid': "Your password did not match.",
+            'required': "Password Confirmation is required."
+    }
+    )
+    class Meta:
+        model = User
+        fields = ('old_password', 'new_password1', 'new_password2')
+
+    def save(self, commit = True):
+        user = super(UserCreationForm, self).save(commit=False)
+        user.set_password(self.cleaned_data['new_password1'])
+        if commit:
+            user.save()
+        return user
+

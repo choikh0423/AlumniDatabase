@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import authenticate, login as auth_login
-from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm
+from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm, CustomChangePasswordForm
 
 from django.db.models import Q
 
@@ -45,6 +45,10 @@ def signup(request):
 
     return render(request, 'signup.html', {"form": signup_form, "profile_form": profile_form})
 
+def change_password(request):
+    if request.method == "POST":
+        change_form = CustomChangePasswordForm()
+        
 
 # def search(request):
 #     template = 'index.html'
