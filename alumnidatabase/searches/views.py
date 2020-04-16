@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import update_session_auth_hash, authenticate, login as auth_login
 from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm, CustomChangePasswordForm
 
 from django.db.models import Q
@@ -45,9 +45,21 @@ def signup(request):
 
     return render(request, 'signup.html', {"form": signup_form, "profile_form": profile_form})
 
-def change_password(request):
+def change_password1(request):
     if request.method == "POST":
-        change_form = CustomChangePasswordForm()
+        _form = CustomChangePasswordForm(request.POST)
+        if email_form.is_valid():
+            user = email_form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+    else:
+        email_form = CustomChangePasswordForm()
+    return render(request, 'password_reset_form.html', {"form": email_form})
+
+#def change_password2(request):
+ #   if request.method == "POST":
+
         
 
 # def search(request):
