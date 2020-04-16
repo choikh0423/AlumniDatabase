@@ -6,6 +6,7 @@ from .models import Profile
 import datetime
 from string import ascii_lowercase, digits
 from random import choice
+from django.core.mail import send_mail
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -112,45 +113,53 @@ class ProfileSignupForm(ModelForm):
         model = Profile
         fields = ('joined_year',)
 
-class CustomChangePasswordForm(PasswordResetForm):
-    old_password = forms.CharField(
-        label = 'Old Password',
-        widget=forms.PasswordInput,
+
+class PasswordResetEmailForm(forms.Form):
+    email = forms.EmailField(
+        label='Email',
         required=True,
-        error_messages={
-            'invalid': "Incorrect Old Password.",
-            'required': "Old Password is required."
-    }
     )
 
-    new_password1 = forms.CharField(
-        label = 'New Password',
-        widget=forms.PasswordInput(
-            attrs={'placeholder': "Use 8 or more characters with a mix of letters, numbers & symbols."}),
-        required=True,
-        error_messages={
-            'invalid': "Please provide proper first name.",
-            'required': " is required."
-    }
-    )
-    
-    new_password2 = forms.CharField(
-        label = 'New Password Confirmation',
-        widget=forms.PasswordInput,
-        required=True,
-        error_messages={
-            'invalid': "Your password did not match.",
-            'required': "Password Confirmation is required."
-    }
-    )
-    class Meta:
-        model = User
-        fields = ('old_password', 'new_password1', 'new_password2')
 
-    def save(self, commit = True):
-        user = super(UserCreationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data['new_password1'])
-        if commit:
-            user.save()
-        return user
+# class CustomChangePasswordForm(PasswordResetForm):
+#     old_password = forms.CharField(
+#         label='Old Password',
+#         widget=forms.PasswordInput,
+#         required=True,
+#         error_messages={
+#             'invalid': "Incorrect Old Password.",
+#             'required': "Old Password is required."
+#         }
+#     )
 
+#     new_password1 = forms.CharField(
+#         label='New Password',
+#         widget=forms.PasswordInput(
+#             attrs={'placeholder': "Use 8 or more characters with a mix of letters, numbers & symbols."}),
+#         required=True,
+#         error_messages={
+#             'invalid': "Please provide proper first name.",
+#             'required': " is required."
+#         }
+#     )
+
+#     new_password2 = forms.CharField(
+#         label='New Password Confirmation',
+#         widget=forms.PasswordInput,
+#         required=True,
+#         error_messages={
+#             'invalid': "Your password did not match.",
+#             'required': "Password Confirmation is required."
+#         }
+#     )
+
+#     class Meta:
+#         model = User
+#         fields = ('old_password', 'new_password1', 'new_password2')
+
+#     def save(self, commit=True):
+#         user = super(UserCreationForm, self).save(commit=False)
+#         user.set_password(self.cleaned_data['new_password1'])
+#         if commit:
+#             user.save()
+#         return user
