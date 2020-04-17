@@ -274,3 +274,19 @@ body {
   font-size: 16px;
   margin-top: 15%;
 }
+
+#success {
+  color: #00ce6b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#email_success {
+  display: flex;
+}
+
+#email_check_icon {
+  width: 24px;
+  height: 24px;
+  margin: auto 3% auto 0;
+}
