@@ -1,5 +1,8 @@
 from django import forms
 from django.forms import ModelForm
+from django.contrib.auth import (
+    get_user_model,
+)
 from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm, PasswordResetForm
 from django.contrib.auth.models import User
 from .models import Profile
@@ -7,6 +10,8 @@ import datetime
 from string import ascii_lowercase, digits
 from random import choice
 from django.core.mail import send_mail
+
+UserModel = get_user_model()
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -114,52 +119,26 @@ class ProfileSignupForm(ModelForm):
         fields = ('joined_year',)
 
 
-class PasswordResetEmailForm(forms.Form):
-    email = forms.EmailField(
-        label='Email',
-        required=True,
-    )
+class CustomPasswordResetForm(PasswordResetForm):
+    
+    def get_users(self, email):
+        """
+        On top of given get_users function, adds email validation feature
+        """
+        email_field_name = UserModel.get_email_field_name()
+        active_users = UserModel._default_manager.filter(**{
+            '%s__iexact' % email_field_name: email,
+            'is_active': True,
+        })
+        if active_users.exists():
+            return (
+            u for u in active_users
+            if u.has_usable_password() and
+            _unicode_ci_compare(email, getattr(u, email_field_name))
+        )
+        else:
+            raise ValidationError("Non-registered Email")
 
 
-# class CustomChangePasswordForm(PasswordResetForm):
-#     old_password = forms.CharField(
-#         label='Old Password',
-#         widget=forms.PasswordInput,
-#         required=True,
-#         error_messages={
-#             'invalid': "Incorrect Old Password.",
-#             'required': "Old Password is required."
-#         }
-#     )
 
-#     new_password1 = forms.CharField(
-#         label='New Password',
-#         widget=forms.PasswordInput(
-#             attrs={'placeholder': "Use 8 or more characters with a mix of letters, numbers & symbols."}),
-#         required=True,
-#         error_messages={
-#             'invalid': "Please provide proper first name.",
-#             'required': " is required."
-#         }
-#     )
 
-#     new_password2 = forms.CharField(
-#         label='New Password Confirmation',
-#         widget=forms.PasswordInput,
-#         required=True,
-#         error_messages={
-#             'invalid': "Your password did not match.",
-#             'required': "Password Confirmation is required."
-#         }
-#     )
-
-#     class Meta:
-#         model = User
-#         fields = ('old_password', 'new_password1', 'new_password2')
-
-#     def save(self, commit=True):
-#         user = super(UserCreationForm, self).save(commit=False)
-#         user.set_password(self.cleaned_data['new_password1'])
-#         if commit:
-#             user.save()
-#         return user
