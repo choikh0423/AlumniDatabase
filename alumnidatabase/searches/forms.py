@@ -16,8 +16,10 @@ from django.core.exceptions import ValidationError
 
 UserModel = get_user_model()
 
+
 def _unicode_ci_compare(s1, s2):
     return unicodedata.normalize('NFKC', s1).casefold() == unicodedata.normalize('NFKC', s2).casefold()
+
 
 class CustomAuthenticationForm(AuthenticationForm):
     username = UsernameField(
@@ -51,7 +53,7 @@ class CustomSignupForm(UserCreationForm):
     password1 = forms.CharField(
         label='Password',
         widget=forms.PasswordInput(
-            attrs={'placeholder': "Use 8 or more characters with a mix of letters, numbers & symbols."}),
+            attrs={'placeholder': "8+ characters with mix of letters and numbers & symbols"}),
         required=True,
         help_text="It must not be commonly used and too similar to your personal information.",
         error_messages={
@@ -143,4 +145,3 @@ class CustomPasswordResetForm(PasswordResetForm):
             )
         else:
             raise ValidationError("Non-registered Email")
-
