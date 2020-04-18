@@ -290,3 +290,19 @@ body {
   height: 24px;
   margin: auto 3% auto 0;
 }
+
+#pw_input1 {
+  margin-top: 15%;
+}
+
+#pw_input1 input {
+  width: 100%;
+  background-color: #efefef;
+  margin-bottom: 5%;
+}
+
+#pw_input2 input {
+  width: 100%;
+  background-color: #efefef;
+}
+}

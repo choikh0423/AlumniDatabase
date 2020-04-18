@@ -6,6 +6,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='home'),
+    path('accounts/password_reset/',
+         views.CustomPasswordResetView.as_view(), name='password_reset'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', views.signup, name='signup'),
 ]

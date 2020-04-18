@@ -11,6 +11,8 @@ from string import ascii_lowercase, digits
 from random import choice
 from django.core.mail import send_mail
 
+from django.core.exceptions import ValidationError
+
 UserModel = get_user_model()
 
 
@@ -120,7 +122,7 @@ class ProfileSignupForm(ModelForm):
 
 
 class CustomPasswordResetForm(PasswordResetForm):
-    
+
     def get_users(self, email):
         """
         On top of given get_users function, adds email validation feature
@@ -132,13 +134,10 @@ class CustomPasswordResetForm(PasswordResetForm):
         })
         if active_users.exists():
             return (
-            u for u in active_users
-            if u.has_usable_password() and
-            _unicode_ci_compare(email, getattr(u, email_field_name))
-        )
+                u for u in active_users
+                if u.has_usable_password() and
+                _unicode_ci_compare(email, getattr(u, email_field_name))
+            )
         else:
             raise ValidationError("Non-registered Email")
-
-
-
 

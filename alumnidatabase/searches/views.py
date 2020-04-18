@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.auth import update_session_auth_hash, authenticate, login as auth_login
-from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm
+from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm, CustomPasswordResetForm
 
 from django.db.models import Q
 from django.core.exceptions import ValidationError
@@ -56,8 +56,9 @@ def signup(request):
 
     return render(request, 'signup.html', {"form": signup_form, "profile_form": profile_form})
 
+
 class CustomPasswordResetView(PasswordResetView):
-    form_class = CustomChangePasswordForm
+    form_class = CustomPasswordResetForm
 
 
 # def change_password1(request):
