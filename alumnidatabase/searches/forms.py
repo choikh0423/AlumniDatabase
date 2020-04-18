@@ -1,3 +1,4 @@
+import unicodedata
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth import (
@@ -15,6 +16,8 @@ from django.core.exceptions import ValidationError
 
 UserModel = get_user_model()
 
+def _unicode_ci_compare(s1, s2):
+    return unicodedata.normalize('NFKC', s1).casefold() == unicodedata.normalize('NFKC', s2).casefold()
 
 class CustomAuthenticationForm(AuthenticationForm):
     username = UsernameField(
