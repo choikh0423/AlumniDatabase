@@ -18,6 +18,12 @@ body {
   height: 10%;
 }
 
+#main_body #navbar {
+  border-bottom: solid;
+  border-color: #c4c4c4;
+  border-width: 1px;
+}
+
 #navbar ul {
   display: flex;
   flex-direction: row;
@@ -240,7 +246,7 @@ body {
 }
 
 #signup_input select {
-  background-color: #EFEFEF;
+  background-color: #efefef;
   border-radius: 5%;
   width: 45%;
   height: 46px;
@@ -249,8 +255,8 @@ body {
   background: url("/static/images/select_arrow.png") no-repeat right;
   background-size: auto 30px;
   background-position-x: 175px;
-  -webkit-appearance:none;
-  -moz-appearance:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 #help_text {
@@ -258,12 +264,12 @@ body {
   font-size: 16px;
 }
 
-#help_text a{
-  color: #BD8600;
+#help_text a {
+  color: #bd8600;
   text-decoration: none;
 }
 
-/* Password Reset */
+/* Intro: Password Reset */
 #pw_back_arrow {
   height: 24px;
   width: 24px;
@@ -332,5 +338,39 @@ body {
   background-color: #efefef;
 }
 
+/* Main: Homepage*/
+#main {
+  margin-top: 6%;
+  width: 100%;
+}
 
+#main p {
+  font-size: 25px;
+  font-weight: 200px;
+  text-align: center;
+}
+
+#main form {
+  justify-content: center;
+  text-align: center;
+}
+
+#main input {
+  background-color: #efefef;
+  border-radius: 3%;
+  border: none;
+  width: 30%;
+  height: 46px;
+  margin-top: 2%;
+}
+
+#main button {
+  margin-left: 1%;
+  border-radius: 10%;
+  border: none;
+  background-color: black;
+  color: white;
+  height: 46px;
+  width: 7%;
+  font-size: 18px;
 }

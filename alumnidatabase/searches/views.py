@@ -60,10 +60,6 @@ def signup(request):
 class CustomPasswordResetView(PasswordResetView):
     form_class = CustomPasswordResetForm
 
-
-# class CustomLogoutView(LogoutView):
-#     template_name = 'registration/login.html'
-
     # def change_password1(request):
     #     if request.method == "POST":
     #         _form = CustomChangePasswordForm(request.POST)
