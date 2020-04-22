@@ -128,20 +128,8 @@ class ProfileSignupForm(ModelForm):
 
 class CustomPasswordResetForm(PasswordResetForm):
 
-    def get_users(self, email):
-        """
-        On top of given get_users function, adds email validation feature
-        """
-        email_field_name = UserModel.get_email_field_name()
-        active_users = UserModel._default_manager.filter(**{
-            '%s__iexact' % email_field_name: email,
-            'is_active': True,
-        })
-        if active_users.exists():
-            return (
-                u for u in active_users
-                if u.has_usable_password() and
-                _unicode_ci_compare(email, getattr(u, email_field_name))
-            )
-        else:
-            raise ValidationError("Non-registered Email")
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        if User.objects.filter(email=email).exists() == False:
+            raise forms.ValidationError("non-registered email")
+        return email
