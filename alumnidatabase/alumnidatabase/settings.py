@@ -131,5 +131,21 @@ MEDIA_ROOT = BASE_DIR
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'accounts/login/'
+LOGOUT_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = ('searches.backends.SettingsBackend',)
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kc677@cornell.edu'
+EMAIL_HOST_PASSWORD = 'dkjukirjzhrxdzjp'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'AlumniDatabaseAdmin <noreply@alumnidatabase.com>'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER= os.environ.get('EMAIL_USER')
+# EMAIL_HOST_PASSWORD= os.environ.get('EMAIL_PASS')
