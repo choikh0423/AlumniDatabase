@@ -1,3 +1,8 @@
-# AlumniDatabase
-This is a Django Web Application of Alumni Database for Clubs. This is aimed to help clubs to construct alumni database web application with the necessary funcionalities: Search, User Authentication, etc.
+# Alumni Database 
+This website is an **alumni database web application** intended to provide quick and easy search function for the members of the organization to find their alumni.
 
+
+## Contributors
+- Dongho Kim - Back-End Developer
+- Jeeyoon Kim - UI/UX Designer
+- Kyu Hwan Choi - Back-End & Front-End Developer
