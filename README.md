@@ -1,4 +1,4 @@
 # Alumni Database 
 This is a Django Web Application of Alumni Database for Clubs. This is aimed to help clubs to construct alumni database web application with the necessary funcionalities: Search, User Authentication, etc.
 
-# Contributors
+## Contributors
