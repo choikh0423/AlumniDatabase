@@ -1,5 +1,5 @@
 # Alumni Database 
-This website is an *alumni database web application* intended to provide quick and easy search function for the members of the organization to find their alumni.
+This website is an **alumni database web application** intended to provide quick and easy search function for the members of the organization to find their alumni.
 
 
 ## Contributors
