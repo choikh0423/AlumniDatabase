@@ -8,7 +8,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    joined_year = models.IntegerField(null=False)
+    joined_year = models.IntegerField(default=2018, null=False)
 
     # @receiver(post_save, sender=User)
     # def create_user_profile(sender, instance, created, **kwargs):
@@ -27,25 +27,40 @@ class College(models.Model):
     """Model representing a College within university."""
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Major(models.Model):
     """Model representing a Major."""
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Industry(models.Model):
     """Model representing a Industry."""
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Employer(models.Model):
     """Model representing a Employer."""
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Location(models.Model):
     """Model representing a Location."""
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Alumni(models.Model):
