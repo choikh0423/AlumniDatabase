@@ -131,6 +131,7 @@ class CustomPasswordResetView(PasswordResetView):
     #     results = Post.object.filter(
     #         Q(name__icontains=query) | Q(email__icontains=query))
 
+<<<<<<< HEAD
 
 @login_required
 def alumnilist(request):
@@ -139,6 +140,19 @@ def alumnilist(request):
 
     if query:
         alumni_list = alumni_list.filter()
+=======
+@login_required
+def alumnilist(request):
+    alumni_list = Alumni.objects.all()
+
+    query = request.GET.get("q")
+    if query:
+        alumni_list = alumni_list.filter(
+            Q(name__icontains=query) 
+            ).distinct()
+
+    paginator = Paginator(alumni_list, 2)
+>>>>>>> 6a48ca5a6e117516dec7734eb555d75d915d0e23
 
     paginator = Paginator(alumni_list, 1)
     page_number = request.GET.get('page')
