@@ -5,7 +5,6 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 from django.contrib.auth import update_session_auth_hash, authenticate, login as auth_login
 from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm, CustomPasswordResetForm
 
-from django.db.models import Q
 from django.core.exceptions import ValidationError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
@@ -16,9 +15,9 @@ from django.template import loader
 from django.core.mail import send_mail
 from django.utils.encoding import force_bytes
 
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Alumni
-
+from django.db.models import Q
 
 import logging
 
@@ -133,10 +132,15 @@ class CustomPasswordResetView(PasswordResetView):
     #         Q(name__icontains=query) | Q(email__icontains=query))
 
 
-def listing(request):
+@login_required
+def alumnilist(request):
     alumni_list = Alumni.objects.all()
-    paginator = Paginator(alumni_list, 2)
+    query = request.GET.get("q")
 
+    if query:
+        alumni_list = alumni_list.filter()
+
+    paginator = Paginator(alumni_list, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'index.html', {'page_obj': page_obj})
