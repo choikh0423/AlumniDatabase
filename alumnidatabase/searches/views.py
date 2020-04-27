@@ -16,6 +16,10 @@ from django.template import loader
 from django.core.mail import send_mail
 from django.utils.encoding import force_bytes
 
+from django.core.paginator import Paginator
+from .models import Alumni
+
+
 import logging
 
 
@@ -127,3 +131,12 @@ class CustomPasswordResetView(PasswordResetView):
 
     #     results = Post.object.filter(
     #         Q(name__icontains=query) | Q(email__icontains=query))
+
+
+def listing(request):
+    alumni_list = Alumni.objects.all()
+    paginator = Paginator(alumni_list, 2)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'index.html', {'page_obj': page_obj})
