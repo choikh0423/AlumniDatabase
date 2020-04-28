@@ -20,6 +20,7 @@ from .models import Alumni, College, Industry, Employer, Location
 from django.db.models import Q
 
 import logging
+import difflib
 
 
 @login_required
@@ -135,8 +136,11 @@ class CustomPasswordResetView(PasswordResetView):
 @login_required
 def alumnilist(request):
     alumni_list = Alumni.objects.all()
+    static_alumni_list = Alumni.objects.all()
 
     query = request.GET.get("q")
+
+    alist = list(alumni_list)
 
     if query:
         alumni_list = alumni_list.filter(
@@ -147,11 +151,20 @@ def alumnilist(request):
             Q(industry__name__icontains=query) |
             Q(current_employer__name__icontains=query) |
             Q(past_employer__name__icontains=query)        
-        
         ).distinct()
+
+        alist = list(alumni_list)
+        #college and employer
+        #order_by, distinct()
         
-    paginator = Paginator(alumni_list, 2)
+        for alum in static_alumni_list:
+            if difflib.SequenceMatcher(None, query, alum.name).ratio() > 0.7:
+                alist.append(alum)
+
+        
+    paginator = Paginator(alist, 2)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'index.html', {'page_obj': page_obj})
+
