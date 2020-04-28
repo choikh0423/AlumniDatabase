@@ -65,7 +65,7 @@ class Location(models.Model):
 
 class Alumni(models.Model):
     name = models.CharField(max_length=100)
-    photo = models.ImageField(null=True)
+    photo = models.ImageField(upload_to='uploads/', null=True)
     college = models.ForeignKey(College, on_delete=models.CASCADE, null=True)
     graduation_date = models.IntegerField()
     industry = models.ForeignKey(Industry, on_delete=models.CASCADE, null=True)

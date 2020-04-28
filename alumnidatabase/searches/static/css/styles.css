@@ -1,5 +1,5 @@
 html {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica Neue";
 
   height: 100vh;
 }
@@ -16,18 +16,13 @@ body {
 /* Navigation Bar CSS */
 #navbar {
   height: 10%;
-}
-
-#main_body #navbar {
-  border-bottom: solid;
-  border-color: #c4c4c4;
-  border-width: 1px;
+  margin: 0 10% 0 10%;
 }
 
 #navbar ul {
   display: flex;
   flex-direction: row;
-  padding: 1% 2% 1% 2%;
+  padding: 1% 2% 1% 0%;
 }
 
 #navbar li {
@@ -36,21 +31,17 @@ body {
 }
 
 #navbar-part1 {
-  width: 20%;
+  width: 40%;
 }
 
 #navbar-part1 li {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 #navbar-part1 a {
   text-decoration: none;
   color: black;
-}
-
-#navbar-part2 {
-  width: 60%;
 }
 
 #navbar-part2-1 {
@@ -340,28 +331,52 @@ body {
 
 /* Main: Homepage*/
 #main {
-  margin-top: 6%;
-  width: 100%;
+  margin: 3% auto 0 auto;
+  width: 85%;
+  background-color: #ffdc7d;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+#main_search {
+  width: 60%;
+  margin-left: 10%;
+}
+
+#instruction {
+  margin: 5% auto 0 auto;
+  width: 65%;
 }
 
 #main p {
-  font-size: 25px;
+  padding-top: 5%;
   font-weight: 200px;
-  text-align: center;
+  text-align: left;
+}
+
+#main_intro_text {
+  width: 50%;
+  color: #bd8600;
+  font-weight: 500;
+  font-size: 35px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -1.05px;
 }
 
 #main form {
-  justify-content: center;
-  text-align: center;
+  padding-bottom: 5%;
 }
 
 #main input {
-  background-color: #efefef;
-  border-radius: 3%;
   border: none;
   width: 30%;
-  height: 46px;
+  height: 50px;
   margin-top: 2%;
+  border-radius: 30px;
+  background-color: #ffffff;
 }
 
 #main button {
@@ -373,4 +388,30 @@ body {
   height: 46px;
   width: 7%;
   font-size: 18px;
+}
+
+#main img {
+  position: absolute;
+  margin: 3% 0 0 40%;
+  width: 40%;
+}
+
+#instruction-label {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#content-holder {
+  margin: 0 10% 0 10%;
+  width: 15%;
+  border-radius: 30px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+  justify-content: center;
+  text-align: center;
+}
+
+#content-holder-text {
+  padding: 3% 3% 5% 3%;
+  text-align: left;
 }

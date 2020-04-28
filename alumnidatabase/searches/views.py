@@ -146,12 +146,11 @@ def alumnilist(request):
             Q(graduation_date__icontains=query) |
             Q(industry__name__icontains=query) |
             Q(current_employer__name__icontains=query) |
-            Q(past_employer__name__icontains=query)        
-        
+            Q(past_employer__name__icontains=query)
         ).distinct()
-        
+
     paginator = Paginator(alumni_list, 2)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'index.html', {'page_obj': page_obj})
+    return render(request, 'search.html', {'page_obj': page_obj})
