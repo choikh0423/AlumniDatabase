@@ -5,7 +5,6 @@
     {% block title %}<title>Welcome to Alumni Database</title>{% endblock %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
   </head>
   {% if user.is_authenticated %}
     <body id='main_body'>
@@ -13,16 +12,10 @@
         {% block sidebar1 %}
         <ul>
           <div id='navbar-part1'>
-            <li><a href="{% url 'home' %}">Alumni Database</a></li>
+            <li><a href="{% url 'home' %}">ALUMNI DATABASE</a></li>
           </div>
           <div id='navbar-part2'>
-            <div id='navbar-part2-1'>
-              <li><a href="{% url 'home' %}">Home</a></li>
-              <li><a href="/">Directory</a></li>
-            </div>
-          </div>
-          <div id='navbar-part3'>
-          
+          <li><a href="/">Directory</a></li>
             <li>{{ user.first_name }} {{ user.last_name }} </li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
 

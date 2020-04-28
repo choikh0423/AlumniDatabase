@@ -1,35 +1,21 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+{% load static %}
 <div id = "main">
-  <p> Search Your Alumni<p>
-  <form method='GET' action=''>
-    <input type='text' name = 'q' placeholder='Search Alumni' value = '{{ request.GET.q}}' />
-    <input type='submit' value='Search'/>
-  </form>
+    <div id="main_search">
+        <p id = "main_intro_text"> We help you discover your alumni</p>
+        <form method='GET' action={% url 'search' %}>
+            <input type='text' name = 'q' placeholder='Search Alumni' value = '{{ request.GET.q}}' />
+            <input type='submit' value='Search'/>
+
+        </form>
+    </div>
+  <img src={% static 'images/main_illustration.png'%} alt="main illustration"/>
 </div> 
 
-
-{% for obj in page_obj %}
-    {{ obj.name }}
-    <p> hey </p>
-{% endfor %}
-
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
+<div id = "instruction">
+    <p id="instruction-label">Instructions</p>
 </div>
+
 {% endblock %}
