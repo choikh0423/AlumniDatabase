@@ -5,7 +5,6 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 from django.contrib.auth import update_session_auth_hash, authenticate, login as auth_login
 from .forms import CustomAuthenticationForm, CustomSignupForm, ProfileSignupForm, CustomPasswordResetForm
 
-from django.db.models import Q
 from django.core.exceptions import ValidationError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
@@ -15,6 +14,10 @@ from django.contrib.auth.models import User
 from django.template import loader
 from django.core.mail import send_mail
 from django.utils.encoding import force_bytes
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Alumni, College, Industry, Employer, Location
+from django.db.models import Q
 
 import logging
 
@@ -127,3 +130,28 @@ class CustomPasswordResetView(PasswordResetView):
 
     #     results = Post.object.filter(
     #         Q(name__icontains=query) | Q(email__icontains=query))
+
+
+@login_required
+def alumnilist(request):
+    alumni_list = Alumni.objects.all()
+
+    query = request.GET.get("q")
+
+    if query:
+        alumni_list = alumni_list.filter(
+            Q(name__icontains=query) |
+            Q(college__name__icontains=query) |
+            Q(industry__name__icontains=query) |
+            Q(graduation_date__icontains=query) |
+            Q(industry__name__icontains=query) |
+            Q(current_employer__name__icontains=query) |
+            Q(past_employer__name__icontains=query)        
+        
+        ).distinct()
+        
+    paginator = Paginator(alumni_list, 2)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'index.html', {'page_obj': page_obj})
