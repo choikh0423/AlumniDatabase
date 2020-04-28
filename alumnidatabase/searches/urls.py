@@ -13,4 +13,4 @@ urlpatterns = [
          views.CustomPasswordResetView.as_view(), name='password_reset'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', views.signup, name='signup'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

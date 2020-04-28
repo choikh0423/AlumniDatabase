@@ -150,21 +150,19 @@ def alumnilist(request):
             Q(graduation_date__icontains=query) |
             Q(industry__name__icontains=query) |
             Q(current_employer__name__icontains=query) |
-            Q(past_employer__name__icontains=query)        
+            Q(past_employer__name__icontains=query)
         ).distinct()
 
         alist = list(alumni_list)
         #college and employer
         #order_by, distinct()
-        
+
         for alum in static_alumni_list:
             if difflib.SequenceMatcher(None, query, alum.name).ratio() > 0.7:
                 alist.append(alum)
 
-        
     paginator = Paginator(alist, 2)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'index.html', {'page_obj': page_obj})
-
+    return render(request, 'search.html', {'page_obj': page_obj})
