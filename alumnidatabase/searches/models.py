@@ -64,7 +64,8 @@ class Location(models.Model):
 
 
 class Alumni(models.Model):
-    name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(default = 'null', max_length=100)
     photo = models.ImageField(upload_to='uploads/', null=True)
     college = models.ForeignKey(College, on_delete=models.CASCADE, null=True)
     graduation_date = models.IntegerField()
@@ -75,4 +76,6 @@ class Alumni(models.Model):
     email = models.EmailField(max_length=200, null=True)
 
     def __str__(self):
-        return self.name
+        return self.first_name
+
+    

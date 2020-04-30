@@ -136,15 +136,26 @@ class CustomPasswordResetView(PasswordResetView):
 @login_required
 def alumnilist(request):
     alumni_list = Alumni.objects.all()
+    college_list = College.objects.all()
+    industry_list = Industry.objects.all()
+    employer_list = Employer.objects.all()
+
+
     static_alumni_list = Alumni.objects.all()
 
     query = request.GET.get("q")
 
     alist = list(alumni_list)
+    # clist = list(college_list)
+    # ilist = list(industry_list)
+    # elist = list(employer_list)
+    # finallist = alist + clist + ilist + elist
+    # static_finallist = finallist
 
     if query:
         alumni_list = alumni_list.filter(
-            Q(name__icontains=query) |
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
             Q(college__name__icontains=query) |
             Q(industry__name__icontains=query) |
             Q(graduation_date__icontains=query) |
@@ -154,12 +165,40 @@ def alumnilist(request):
         ).distinct()
 
         alist = list(alumni_list)
+        # finallist = alist
+
         #college and employer
         #order_by, distinct()
 
         for alum in static_alumni_list:
-            if difflib.SequenceMatcher(None, query, alum.name).ratio() > 0.7:
+
+            full_name = alum.first_name + ' ' + alum.last_name 
+            past_employer_list = list(alum.past_employer.all())
+
+            if difflib.SequenceMatcher(None, query, full_name).ratio() >= 0.6:
+                alist.appen(alum)
+
+            if difflib.SequenceMatcher(None, query, alum.first_name).ratio() >= 0.6:
                 alist.append(alum)
+
+            if difflib.SequenceMatcher(None, query, alum.last_name).ratio() >= 0.6:
+                alist.append(alum)
+                
+            if difflib.SequenceMatcher(None, query, alum.college.name).ratio() >= 0.6:
+                alist.append(alum)
+        
+            if difflib.SequenceMatcher(None, query, alum.industry.name).ratio() >= 0.6:
+                alist.append(alum)
+
+            if difflib.SequenceMatcher(None, query, alum.current_employer.name).ratio() >= 0.6:
+                alist.append(alum)
+
+            for employer in past_employer_list:
+                if difflib.SequenceMatcher(None, query, employer.name).ratio() >= 0.6:
+                     alist.append(alum)
+
+        alist = list(set(alist))
+
 
     paginator = Paginator(alist, 2)
 
