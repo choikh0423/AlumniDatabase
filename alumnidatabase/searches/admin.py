@@ -18,7 +18,7 @@ admin.site.register(Employer)
 
 @admin.register(Alumni)
 class SearchAdmin(admin.ModelAdmin):
-    list_display = ('name', 'college', 'graduation_date',
+    list_display = ('first_name', 'last_name', 'college', 'graduation_date',
                     'industry', 'current_employer')
 
 

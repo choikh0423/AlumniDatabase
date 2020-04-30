@@ -10,6 +10,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     joined_year = models.IntegerField(default=2018, null=False)
 
+    def __str__(self):
+        return self.user.first_name
+
     # @receiver(post_save, sender=User)
     # def create_user_profile(sender, instance, created, **kwargs):
     #     if created:
@@ -18,9 +21,6 @@ class Profile(models.Model):
     # @receiver(post_save, sender=User)
     # def save_user_profile(sender, instance, **kwargs):
     #     instance.profile.save()
-
-    def __str__(self):
-        return self.user.first_name
 
 
 class College(models.Model):
@@ -64,7 +64,8 @@ class Location(models.Model):
 
 
 class Alumni(models.Model):
-    name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(default='null', max_length=100)
     photo = models.ImageField(upload_to='uploads/', null=True)
     college = models.ForeignKey(College, on_delete=models.CASCADE, null=True)
     graduation_date = models.IntegerField()
@@ -75,4 +76,4 @@ class Alumni(models.Model):
     email = models.EmailField(max_length=200, null=True)
 
     def __str__(self):
-        return self.name
+        return self.first_name
