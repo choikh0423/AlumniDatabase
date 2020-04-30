@@ -175,7 +175,7 @@ def alumnilist(request):
             past_employer_list = list(alum.past_employer.all())
 
             if difflib.SequenceMatcher(None, query, full_name).ratio() >= 0.6:
-                alist.appen(alum)
+                alist.append(alum)
 
             if difflib.SequenceMatcher(None, query, alum.first_name).ratio() >= 0.6:
                 alist.append(alum)
