@@ -6,16 +6,16 @@
     <div id="main_search">
         <p id = "main_intro_text"> We help you discover your alumni</p>
         <form method='GET' action={% url 'search' %}>
-            <input type='text' name = 'q' placeholder='Search Alumni' value = '{{ request.GET.q}}' />
-            <input type='submit' value='Search'/>
-
+            <input id="search_input" type='text' name = 'q' placeholder='Search Alumni' value = '{{ request.GET.q}}' />
+            {% comment %} <input type='submit' value='Search'/> {% endcomment %}
+            <input id="submit_input" type="image" src={% static 'images/sample_search.png'%} alt="submit"/>
         </form>
     </div>
   <img src={% static 'images/main_illustration.png'%} alt="main illustration"/>
 </div> 
 
 <div id = "instruction">
-    <p id="instruction-label">Instructions</p>
+    <p id="instruction-label"></p>
 </div>
 
 {% endblock %}

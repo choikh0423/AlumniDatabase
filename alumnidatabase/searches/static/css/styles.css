@@ -16,22 +16,24 @@ body {
 /* Navigation Bar CSS */
 #navbar {
   height: 10%;
-  margin: 0 10% 0 10%;
+  margin: 2% 2% 0 2%;
 }
 
 #navbar ul {
+  margin: 0;
+  padding: 1% 2% 1% 0%;
   display: flex;
   flex-direction: row;
-  padding: 1% 2% 1% 0%;
 }
 
-#navbar li {
+#navbar ul li {
   display: inline-block;
   color: black;
 }
 
 #navbar-part1 {
   width: 40%;
+
 }
 
 #navbar-part1 li {
@@ -44,8 +46,10 @@ body {
   color: black;
 }
 
-#navbar-part2-1 {
-  padding: 0 auto 0 auto;
+
+#navbar-part2{
+  width: 60%;
+  text-align: right;
 }
 
 #navbar-part2 li {
@@ -77,14 +81,33 @@ body {
 }
 
 #intro_static img {
+  margin-top: 15%;
   width: 85%;
 }
 
 #intro_static h1 {
-  margin: 0 auto 15% auto;
-  width: 60%;
+  margin: 0 auto 5% auto;
+  width: 70%;
   text-align: left;
-  font-size: 40px;
+  font-size: 35px;
+  color: #bd8600;
+}
+
+#intro_static h2 {
+  margin: 0 auto 0% auto;
+  width: 70%;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: left;
+  color: #bd8600;
+}
+
+#intro_static h3 {
+  margin: 0 auto 0% auto;
+  width: 70%;
+  font-size: 25px;
+  font-weight: 300;
+  text-align: left;
   color: #bd8600;
 }
 
@@ -93,12 +116,12 @@ body {
   width: 30%;
   margin: auto;
   font-size: 18px;
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 
 #intro_dynamic button {
   height: 46px;
-  border-radius: 5%;
+  border-radius: 5px;
   border: none;
   width: 35%;
   color: white;
@@ -108,28 +131,65 @@ body {
 }
 
 #login-title {
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 13%;
 }
 
 #login_label {
+  font-size: 18px;
   margin-bottom: 3%;
 }
 
 #login_input {
-  margin-bottom: 13%;
+  margin-bottom: 11%;
+  width: 70%;
+  background-color: #efefef;
+  font-size: 14px;
+}
+
+#login_input input {
+  background-color: #efefef;
+  width: 100%;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+#password_label {
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+}
+
+#password_input {
+  width: 70%;
+  background-color: #efefef;
+  font-size: 14px;
+}
+
+#password_input input {
+  background-color: #efefef;
+  width: 100%;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+#forgot_pw_text {
+  font-weight: 400;
+  font-size: 16px;
+  margin: auto 0 auto 0;
+}
+
+#forgot_pw_text a {
+  text-decoration: none;
+  color: #bd8600;
 }
 
 #intro_dynamic form input {
   height: 46px;
-  border-radius: 5%;
+  border-radius: 5px;
   border: none;
-}
-
-#login_input input {
-  width: 70%;
-  background-color: #efefef;
-  font-size: 14px;
 }
 
 #login_button {
@@ -141,26 +201,16 @@ body {
 }
 
 #form_validation p {
+  margin: 1% 0 11% 0;
   color: #ce0031;
   font-size: 15px;
   font-weight: 300;
 }
 
-#forgot_pw_text {
-  font-weight: 400;
-  font-size: 16px;
-  margin-bottom: 2%;
-}
-
-#forgot_pw_text a {
-  text-decoration: none;
-  color: #bd8600;
-}
-
 #register_text {
   font-weight: 400;
   font-size: 16px;
-  margin-bottom: 2%;
+  margin: 1% 0 10% 0;
 }
 
 #register_text a {
@@ -171,9 +221,7 @@ body {
 
 /* Intro: Signup Page CSS */
 #signup_form input {
-  background-color: #efefef;
-  height: 46px;
-  border-radius: 5%;
+  background-color: #efefef;K
   border: none;
 }
 
@@ -217,6 +265,12 @@ body {
   margin: 0 0 3% 0;
 }
 
+#password_help {
+  color: #ce0031;
+  font-weight: 400;
+  margin-top: 0;
+}
+
 #help_text {
   color: black;
   font-weight: 400;
@@ -234,20 +288,23 @@ body {
 #signup_form input {
   margin: 3% 0 0 0;
   font-size: 14px;
+  padding-left: 10px;
+  font-size: 16px;
 }
 
 #signup_input select {
   background-color: #efefef;
-  border-radius: 5%;
+  border-radius: 5px;
   width: 45%;
   height: 46px;
-  margin: 3% 0 0 0;
+  margin: 3% 0 0% 0;
   font-size: 14px;
   background: url("/static/images/select_arrow.png") no-repeat right;
   background-size: auto 30px;
   background-position-x: 175px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  padding-left: 10px;
 }
 
 #help_text {
@@ -370,13 +427,24 @@ body {
   padding-bottom: 5%;
 }
 
-#main input {
+
+
+#search_input{
   border: none;
-  width: 30%;
+  width: 50%;
   height: 50px;
-  margin-top: 2%;
+  font-size: 14px;
   border-radius: 30px;
+  padding-left: 6%;
   background-color: #ffffff;
+}
+
+
+#submit_input {
+  width: 15px;
+  padding: 20px 0 0 0;
+  position: absolute;
+  left: 17%;
 }
 
 #main button {

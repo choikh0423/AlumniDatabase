@@ -11,33 +11,31 @@
       <div id='login_input'>
         {{ form.username }}
       </div>
-      <div id='login_label'>
+      <div id='password_label'>
         {{ form.password.label_tag }}
+        <p id='forgot_pw_text'><a href="{% url 'password_reset' %}">Forgot password?</a></p>
       </div>
-      <div id='login_input'>
+      <div id='password_input'>
         {{ form.password }}
       </div>
-
+        <div id='form_validation'>
+          {% if form.errors %}
+            <p>Your email and password didn't match. Please try again.</p>
+          {% else %}
+            {% if next %}
+              {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+              {% else %}
+                <p>Please login to see this page.</p>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div> 
     <input id="login_button" type="submit" value="Login" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
-  <div id='form_validation'>
-    {% if form.errors %}
-      <p>Your email and password didn't match. Please try again.</p>
-    {% else %}
-      {% if next %}
-        {% if user.is_authenticated %}
-          <p>Your account doesn't have access to this page. To proceed,
-          please login with an account that has access.</p>
-        {% else %}
-          <p>Please login to see this page.</p>
-        {% endif %}
-      {% endif %}
-    {% endif %}
-  </div>
-
-  <p id='forgot_pw_text'><a href="{% url 'password_reset' %}">Forgot password?</a></p>
   <p id='register_text'>Don't have an account? <a href="{% url 'signup' %}">Register</a></p>
 
 {% endblock %}

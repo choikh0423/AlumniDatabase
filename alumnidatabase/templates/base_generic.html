@@ -15,10 +15,9 @@
             <li><a href="{% url 'home' %}">ALUMNI DATABASE</a></li>
           </div>
           <div id='navbar-part2'>
-          <li><a href="/">Directory</a></li>
+            <li><a href="/">Directory</a></li>
             <li>{{ user.first_name }} {{ user.last_name }} </li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
-
           </div>
         </ul>
         {% endblock %}
@@ -31,14 +30,16 @@
           {% block sidebar2 %}
           <ul>
             <div id='navbar-part1'>
-              <li><a href="{% url 'home' %}">Alumni Database</a></li>
+              <li><a href="{% url 'home' %}">ALUMNI DATABASE</a></li>
             </div>
           </ul>
         {% endblock %}
       </div>
       <div id='intro_format'>
         <div id='intro_static'>
-          <h1>Discover your alumni.</h1>
+          <h2>Welcome to</h2>
+          <h1>Alumni Database</h1>
+          <h3>Discover your alumni.</h3>
           <img src={% static 'images/login_illustration.png'%} alt="Login Illustration">
         </div>
         <div id="intro_dynamic">{% block intro %}{% endblock %}</div>

@@ -5,7 +5,7 @@
 
 {% for obj in page_obj %}
     <div id="content-holder">
-      <img src='{{ obj.photo.url }}' alt="main illustration"/>
+      <img src="{{ obj.photo.url}}" alt="main illustration"/>
       <div id="content-holder-text">
         <p>{{ obj.first_name }}</p>
         <p>{{ obj.college }}</p>

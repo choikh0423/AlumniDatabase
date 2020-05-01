@@ -50,9 +50,9 @@
             <p>{{ errors }}</p>
           {% endfor %}
         </div>
-        <div id='signup_help'>
-          <p>{{ field.help_text}}</p>
-        </div>
+          {% if form.errors %}
+            <p id='password_help'>{{ field.help_text}}</p>
+          {% endif %}
       </div>
       {% endif %}
     {% endfor %}
@@ -68,20 +68,5 @@
     <button type="submit">Register</button>
     <p id='help_text'> Already have an account? <a href={% url 'login' %}>Login</a> </p>
   </form>
-
-{% comment %} validation need fix {% endcomment %}
-<div id='form_validation'>
-    {% if form.errors %}
-      <p>Please check if the information you have provided are valid.</p>
-    {% else %}
-      {% if next %}
-        {% if user.is_authenticated %}
-          <p>You are already registered in the site.</p>
-        {% else %}
-          <p>Please login to see this page.</p>
-        {% endif %}
-      {% endif %}
-    {% endif %}
-  </div>
 
 {% endblock %}
