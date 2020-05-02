@@ -2,13 +2,13 @@
 
 {% block content %}
 {% load static %}
+
 <div id="sub_search">
     <form method='GET' action={% url 'search' %}>
         <input id="sub_search_input" type='text' name = 'q' placeholder='Search' value = '{{ request.GET.q}}' />
         <input id="sub_submit_input" type="image" src={% static 'images/sample_search.png'%} alt="submit"/>
     </form>
 </div>
-
 
 {% for sub_list in page_obj_divided %}
     <div id="alum_profile_row">

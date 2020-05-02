@@ -1,5 +1,5 @@
 html {
-  font-family: "Helvetica Neue";
+  font-family: "Helvetica Neue", "HelveticaNeue";
 
   height: 100vh;
 }
@@ -10,23 +10,47 @@ body {
 }
 
 #intro_body {
-  background: linear-gradient(to left, white 70%, #ffdc7d 70%);
+  background: linear-gradient(to left, white 67%, #ffdc7d 67%);
 }
 
 /* Navigation Bar CSS */
-#navbar {
-  height: 10%;
-  margin: 2% 2% 0 2%;
+#navbar2 {
+  height: 8%;
+  margin: 2% 2% 1% 2%;
 }
 
-#navbar ul {
+#navbar1 {
+  height: 8%;
+  margin: 2% 12.5% 1% 12.5%;
+}
+
+#navbar1 ul {
   margin: 0;
   padding: 1% 2% 1% 0%;
   display: flex;
   flex-direction: row;
 }
 
-#navbar ul li {
+#navbar1 ul li {
+  display: inline-block;
+  color: black;
+  font-family: HelveticaNeue;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.6px;
+}
+
+#navbar2 ul {
+  margin: 0;
+  padding: 1% 2% 1% 0%;
+  display: flex;
+  flex-direction: row;
+}
+
+#navbar2 ul li {
   display: inline-block;
   color: black;
 }
@@ -62,6 +86,17 @@ body {
   color: black;
 }
 
+#logo {
+  font-family: HelveticaNeue;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.6px;
+
+}
+
 /* Intro: Login Page CSS */
 /* Static Part */
 #content_container {
@@ -75,7 +110,7 @@ body {
 }
 
 #intro_static {
-  width: 30%;
+  width: 33%;
   text-align: center;
   margin: auto 0 auto 0;
 }
@@ -113,6 +148,7 @@ body {
 
 /* Dynamic Part */
 #intro_dynamic {
+  font-family: HelveticaNeue;
   width: 30%;
   margin: auto;
   font-size: 18px;
@@ -121,7 +157,7 @@ body {
 
 #intro_dynamic button {
   height: 46px;
-  border-radius: 5px;
+  border-radius: 30px;
   border: none;
   width: 35%;
   color: white;
@@ -141,9 +177,11 @@ body {
 }
 
 #login_input {
+  
   margin-bottom: 11%;
-  width: 70%;
+  width: 100%;
   background-color: #efefef;
+  border-radius: 30px;
   font-size: 14px;
 }
 
@@ -157,14 +195,15 @@ body {
 #password_label {
   margin-bottom: 3%;
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  width: 70%;
 }
 
 #password_input {
-  width: 70%;
+  width: 100%;
   background-color: #efefef;
+  border-radius: 30px;
   font-size: 14px;
 }
 
@@ -188,11 +227,12 @@ body {
 
 #intro_dynamic form input {
   height: 46px;
-  border-radius: 5px;
+  border-radius: 30px;
   border: none;
 }
 
 #login_button {
+  margin: 11% 0 0 0;
   width: 45%;
   color: white;
   font-weight: 700;
@@ -201,7 +241,7 @@ body {
 }
 
 #form_validation p {
-  margin: 1% 0 11% 0;
+  margin-top: 1%;
   color: #ce0031;
   font-size: 15px;
   font-weight: 300;
@@ -287,14 +327,13 @@ body {
 
 #signup_form input {
   margin: 3% 0 0 0;
-  font-size: 14px;
   padding-left: 10px;
   font-size: 16px;
 }
 
 #signup_input select {
   background-color: #efefef;
-  border-radius: 5px;
+  border-radius: 30px;
   width: 45%;
   height: 46px;
   margin: 3% 0 0% 0;
@@ -321,15 +360,18 @@ body {
 #pw_back_arrow {
   height: 24px;
   width: 24px;
+  margin-bottom: 8%;
 }
 
 #pw_label1 {
   color: black;
   font-size: 20px;
   font-weight: 700;
+  margin-top:0;
 }
 
 #pw_label2 {
+  margin-top: 12%;
   color: black;
   font-size: 18px;
   font-weight: 700;
@@ -339,20 +381,23 @@ body {
   color: #6b6b6b;
   font-size: 16px;
   font-weight: 400;
+  margin-bottom: 0;
 }
 
 #email input {
   width: 100%;
   background-color: #efefef;
+  padding: 0 0 0 10px;
+  font-size: 16px;
 }
 
 #email_submit {
-  width: 25%;
+  width: 30%;
   background-color: #f5b506;
   color: white;
   font-weight: 700;
   font-size: 16px;
-  margin-top: 15%;
+  margin-top: 13%;
 }
 
 #success {
@@ -372,19 +417,27 @@ body {
 }
 
 #pw_input1 {
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 #pw_input1 input {
-  width: 100%;
+  width: 80%;
   background-color: #efefef;
-  margin-bottom: 5%;
+  margin-bottom: 8%;
+  margin-top: 5%;
+  padding-left: 10px;
+  font-size: 16px;
 }
 
 #pw_input2 input {
-  width: 100%;
+  width: 80%;
   background-color: #efefef;
+  margin-top: 3%;
+  padding-left: 10px;
+  font-size: 16px;
 }
+
+
 
 /* Main: Homepage*/
 #main {
@@ -428,7 +481,7 @@ body {
 }
 
 
-
+/* search */
 #search_input{
   border: none;
   width: 50%;
@@ -469,9 +522,17 @@ body {
   font-weight: 500;
 }
 
-#content-holder {
-  margin: 0 10% 0 10%;
-  width: 15%;
+#alum_profile_row {
+  margin: 0 10% 4% 10%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
+#alum_profile {
+
+  width: 20%;
+  margin: 0 auto 0 auto;
   border-radius: 30px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
   background-color: #ffffff;
@@ -479,7 +540,109 @@ body {
   text-align: center;
 }
 
-#content-holder-text {
-  padding: 3% 3% 5% 3%;
+#alum_profile_text {
+  padding: 0 5% 0 5%;
+  height: 100%;
   text-align: left;
+}
+
+#alum_profile_image {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  width: 100%;
+}
+
+#alum_name {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 1%;
+}
+
+#alum_college {
+  font-size: 16px;
+  color: #7f7f7f;
+  margin: 0 0 20% 0;
+}
+
+#alum_employer {
+  font-size: 16px;
+  color: #494949;
+}
+
+
+#sub_search_input {
+  margin: 2% 12% 4% 12%;
+  border: none;
+  width: 10%;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 30px;
+  padding-left: 4%;
+  background-color: #efefef;
+}
+
+#sub_submit_input {
+  width: 20px;
+  padding: 3% 0 0 0;
+  position: absolute;
+  left: 14%;
+}
+
+/* Popup box */
+#triger_popup{
+  cursor: pointer;
+}
+
+#popupclosebutton {
+  color:#f2f3f5;
+  cursor: pointer;
+  position: absolute;
+  top: 3%;
+  right: 4%;
+}
+
+#popuploseButton:hover {
+  background-color: #ccc;
+}
+
+#popupclosebutton p {
+  font-size: 50px;
+  margin: 0;
+  font-weight: 100;
+}
+
+
+#popup {
+  opacity: 1;
+}
+
+#popupbackground {
+  background-color:rgba(0,0,0,0.7);
+  cursor:pointer;
+  display:none;
+  height:100%;
+  position:fixed;
+  text-align:center;
+  top:0;
+  width:100%;
+  z-index:10000;
+}
+
+#popupbackground > div {
+  background-color: #ffffff;
+  display: inline-block;
+  height: auto;
+  max-width: 551px;
+  min-height: 100px;
+  vertical-align: middle;
+  width: 60%;
+  position: relative;
+  border-radius: 8px;
+  padding: 15px 5%;
+}
+
+#popuphelper {
+  display:inline-block;
+  height:100%;
+  vertical-align:middle;
 }

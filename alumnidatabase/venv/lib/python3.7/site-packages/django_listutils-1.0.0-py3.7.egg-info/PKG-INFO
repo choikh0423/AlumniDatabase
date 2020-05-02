@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: django-listutils
+Version: 1.0.0
+Summary: Django template tag to split list into sub lists.
+Home-page: https://github.com/iogf/listutils
+Author: Iury O. G. Figueiredo
+Author-email: ioliveira@id.uff.br
+License: UNKNOWN
+Download-URL: https://github.com/iogf/listutils/releases
+Description: UNKNOWN
+Keywords: django,listutils,split,lists
+Platform: UNKNOWN

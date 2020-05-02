@@ -19,6 +19,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Alumni, College, Industry, Employer, Location
 from django.db.models import Q
 
+from .functions import partition
+
 import logging
 import difflib
 
@@ -198,8 +200,22 @@ def alumnilist(request):
 
         alist = list(set(alist))
 
-    paginator = Paginator(alist, 2)
+    paginator = Paginator(alist, 8)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'search.html', {'page_obj': page_obj})
+    page_obj_divided = partition(page_obj, 4)
+    return render(request, 'search.html', {'page_obj_divided': page_obj_divided, 'page_obj': page_obj})
+
+
+def directorylist(request):
+    alumni_list = Alumni.objects.all()
+    alist = list(alumni_list)
+
+    paginator = Paginator(alist, 8)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    page_obj_divided = partition(page_obj, 4)
+
+    return render(request, 'directory.html', {'page_obj_divided': page_obj_divided, 'page_obj': page_obj})

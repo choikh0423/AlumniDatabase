@@ -8,14 +8,14 @@
   </head>
   {% if user.is_authenticated %}
     <body id='main_body'>
-      <div id='navbar'>
+      <div id='navbar1'>
         {% block sidebar1 %}
         <ul>
           <div id='navbar-part1'>
-            <li><a href="{% url 'home' %}">ALUMNI DATABASE</a></li>
+            <li id='logo'><a href="{% url 'home' %}">ALUMNI DATABASE</a></li>
           </div>
           <div id='navbar-part2'>
-            <li><a href="/">Directory</a></li>
+            <li><a href="{% url 'directory' %}">Directory</a></li>
             <li>{{ user.first_name }} {{ user.last_name }} </li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
           </div>
@@ -26,11 +26,11 @@
     </body>
   {% else %}
     <body id='intro_body'>
-      <div id='navbar'>
+      <div id='navbar2'>
           {% block sidebar2 %}
           <ul>
             <div id='navbar-part1'>
-              <li><a href="{% url 'home' %}">ALUMNI DATABASE</a></li>
+              <li id='logo'><a href="{% url 'home' %}">ALUMNI DATABASE</a></li>
             </div>
           </ul>
         {% endblock %}

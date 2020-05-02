@@ -19,11 +19,12 @@ from django.urls import include
 from django.views.generic import RedirectView
 import users.views
 import searches.views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('searches/', include('searches.urls'), name='home'),
     path('', RedirectView.as_view(url='searches/', permanent=True))
 ]
-
-# Django Authentication Url (for signin, signout, and account management)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
